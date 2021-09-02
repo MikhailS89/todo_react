@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Todolist from './Todolist'
 import {Context} from './context'
+import axios from 'axios'
 
 export default function Todocontainer (){
 
@@ -12,6 +13,16 @@ export default function Todocontainer (){
         // {id: 4, value: "Ветчина",status: false}
     ])
     const [todoTitle, SetTodoTitle] = useState('')
+
+
+    // useEffect(()=>{
+    //     const getData = async = () => {
+    //         const res = await axios.get('http://localhost:3000/db')
+    //         console.log('res', res)
+    //         setTodos(res.data.db)
+    //     }
+    //     getData()
+    // }, [setTodos])
 
     useEffect(()=>{
         console.log('init')
