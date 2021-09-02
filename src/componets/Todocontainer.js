@@ -41,7 +41,7 @@ export default function Todocontainer (){
         console.log(event)
     }
 
-    //axios PUT
+    //axios PUT input
     const changeTodo = (id, value) => {
         setTodos(todos.map(item=> {
             if(item.id === id){
@@ -56,6 +56,19 @@ export default function Todocontainer (){
         console.log("todos", todos);
     }
 
+    //axios PUT checked
+    const changeChecked = (id, status) => {
+        console.log(id, status)
+        setTodos(todos.map(item=>{
+            if(item.id ===id){
+                item.status = status
+            }
+            return item
+        }))
+        const todo = todos.find(item => item.id === id )
+        axios.put(`http://localhost:3000/db/${id}`, todo)
+    }
+
     //axios DELETE
     const removeTodo = id => {
         setTodos(todos.filter(todo => {
@@ -68,7 +81,7 @@ export default function Todocontainer (){
     
         return (
             <Context.Provider value={{
-                removeTodo, changeTodo
+                removeTodo, changeTodo, changeChecked
             }}>
             <div>
                 <h1>To Do</h1>
