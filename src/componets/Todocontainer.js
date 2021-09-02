@@ -34,7 +34,10 @@ export default function Todocontainer (){
     //не доделан метод changeTodo
     const changeTodo = (id, value) => {
         setTodos(todos.map(item=> {
-            return item = item
+            if(item.id === id){
+                item.value = value
+            }
+            return item
         }))
         
         console.log("id:", id , "value:" , value);

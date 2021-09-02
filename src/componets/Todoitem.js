@@ -9,7 +9,7 @@ export default function Todoitem({id, value, status}) {
             <form>
                 <input type="checkbox"
                 defaultChecked={status}></input>
-                <input onChange={()=> changeTodo (id, value)} defaultValue={value}></input>
+                <input onChange={(event)=> changeTodo (id, event.target.value)} defaultValue={value}></input>
                 <button onClick={()=> removeTodo(id)}>DEL</button>
             </form>
         </div>
