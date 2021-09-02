@@ -1,0 +1,28 @@
+.box__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid black;
+    margin: 0 auto; */
+    max-width: 350px;
+    width: 100%;
+    
+}
+.form__checkbox{
+    display: block;
+    max-width: 25px;
+}
+.form__input{
+    display: block;
+    max-width: 250px;
+}
+.form__button{
+    display: block;
+    max-width: 40px;
+}
