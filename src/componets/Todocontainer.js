@@ -5,13 +5,7 @@ import axios from 'axios'
 
 export default function Todocontainer (){
 
-    const [todos, setTodos] = useState([
-        // {id: 0,value: "Колбасы",status: true},
-        // {id: 1,value: "Сосиски",status: false},
-        // {id: 2,value: "Филе", status: false },
-        // {id: 3,value: "Курица",status: false},
-        // {id: 4, value: "Ветчина",status: false}
-    ])
+    const [todos, setTodos] = useState([])
     const [todoTitle, SetTodoTitle] = useState('')
 
     //axios GET
@@ -29,21 +23,25 @@ export default function Todocontainer (){
         console.log('init')
     }, [])
 
+
+    //axios POST
     const addTodo = event => {
         if (event.key === "Enter" || event.type === "click"){
+            const todo = {
+                id: Date.now(),
+                value: todoTitle,
+                status: false
+            }
             setTodos([
-                ...todos, {
-                    id: Date.now(),
-                    value: todoTitle,
-                    status: false
-                }
+                ...todos, todo
             ])
+            axios.post('http://localhost:3000/db', todo)
             SetTodoTitle('')
         }
         console.log(event)
     }
 
-    //не доделан метод changeTodo
+    //axios PUT
     const changeTodo = (id, value) => {
         setTodos(todos.map(item=> {
             if(item.id === id){
@@ -56,6 +54,7 @@ export default function Todocontainer (){
         console.log("todos", todos);
     }
 
+    //axios DELETE
     const removeTodo = id => {
         setTodos(todos.filter(todo => {
             return todo.id !== id
