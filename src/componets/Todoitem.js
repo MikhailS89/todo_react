@@ -17,7 +17,7 @@ export default function Todoitem({id, value, status}) {
                 {/* <input onChange={(event)=> changeChecked(id, event.target.checked)} type="checkbox"
                 defaultChecked={status}></input> */}
                 <div className="form__checkbox">
-                <Checkbox onChange={(event)=> changeChecked(id, event.target.checked)} defaultChecked={status} inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                <Checkbox onChange={(event)=> changeChecked(id, event.target.checked)} defaultChecked={status} color="primary" inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                 </div>
             
                 {/* <input onChange={(event)=> changeTodo (id, event.target.value)} defaultValue={value}></input> */}

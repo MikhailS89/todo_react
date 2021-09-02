@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react'
 import Todolist from './Todolist'
 import {Context} from './context'
 import axios from 'axios'
+import './Todocontainer.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 export default function Todocontainer (){
 
@@ -83,16 +86,24 @@ export default function Todocontainer (){
             <Context.Provider value={{
                 removeTodo, changeTodo, changeChecked
             }}>
-            <div>
-                <h1>To Do</h1>
-                <div>
-                    <input 
+            <div className="todo">
+                {/* <h1 className="todo__title">To Do</h1> */}
+                <div className="todo__form">
+                    {/* <input 
                         type="text" 
                         value={todoTitle}
                         onChange={event => SetTodoTitle(event.target.value)}
                         onKeyPress={addTodo}
-                    ></input>
-                        <button onClick={addTodo}>ADD</button>
+                    ></input> */}
+                    <div className="todo__form-input">
+                        <TextField value={todoTitle}
+                            onChange={event => SetTodoTitle(event.target.value)}
+                            onKeyPress={addTodo} id="outlined-basic" variant="outlined" style={{ margin: 8 }} size="small"/>
+                    </div>   
+                    <div className="todo__form-button"> 
+                    {/* <button onClick={addTodo}>ADD</button> */}
+                        <Button onClick={addTodo} variant="contained" color="primary" size="large">ADD</Button>
+                    </div>
                 </div>
                 <Todolist todos={todos}/>
             </div>
