@@ -49,7 +49,9 @@ export default function Todocontainer (){
             }
             return item
         }))
-        
+        const todo = todos.find(item => item.id === id )
+        axios.put(`http://localhost:3000/db/${id}`, todo)
+
         console.log("id:", id , "value:" , value);
         console.log("todos", todos);
     }
@@ -59,6 +61,7 @@ export default function Todocontainer (){
         setTodos(todos.filter(todo => {
             return todo.id !== id
         }))
+        
     }
     
         return (
