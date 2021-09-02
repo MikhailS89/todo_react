@@ -61,7 +61,9 @@ export default function Todocontainer (){
         setTodos(todos.filter(todo => {
             return todo.id !== id
         }))
-        
+        const todo = todos.filter(item => item.id ==! id)
+        axios.delete(`http://localhost:3000/db/${id}`, todo)
+        console.log("todos", todos)
     }
     
         return (
