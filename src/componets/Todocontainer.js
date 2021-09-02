@@ -14,15 +14,16 @@ export default function Todocontainer (){
     ])
     const [todoTitle, SetTodoTitle] = useState('')
 
+    //axios GET
+    useEffect(() => {
+        const getData = async () => {
+            const res = await axios.get('http://localhost:3000/db')
+            console.log('res: ', res.data.db)
+            setTodos(res.data.db)
+        }
+        getData()
+    }, [setTodos])
 
-    // useEffect(()=>{
-    //     const getData = async = () => {
-    //         const res = await axios.get('http://localhost:3000/db')
-    //         console.log('res', res)
-    //         setTodos(res.data.db)
-    //     }
-    //     getData()
-    // }, [setTodos])
 
     useEffect(()=>{
         console.log('init')
