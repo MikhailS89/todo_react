@@ -12,16 +12,16 @@ export default function Todocontainer (){
     useEffect(() => {
         const getData = async () => {
             const res = await axios.get('http://localhost:3000/db')
-            console.log('res: ', res.data.db)
+            // console.log('res: ', res.data.db)
             setTodos(res.data.db)
         }
         getData()
     }, [setTodos])
 
 
-    useEffect(()=>{
-        console.log('init')
-    }, [])
+    // useEffect(()=>{
+    //     console.log('init')
+    // }, [])
 
 
     //axios POST
@@ -38,7 +38,7 @@ export default function Todocontainer (){
             axios.post('http://localhost:3000/db', todo)
             SetTodoTitle('')
         }
-        console.log(event)
+        // console.log(event)
     }
 
     //axios PUT input
@@ -52,13 +52,13 @@ export default function Todocontainer (){
         const todo = todos.find(item => item.id === id )
         axios.put(`http://localhost:3000/db/${id}`, todo)
 
-        console.log("id:", id , "value:" , value);
-        console.log("todos", todos);
+        // console.log("id:", id , "value:" , value);
+        // console.log("todos", todos);
     }
 
     //axios PUT checked
     const changeChecked = (id, status) => {
-        console.log(id, status)
+        // console.log(id, status)
         setTodos(todos.map(item=>{
             if(item.id ===id){
                 item.status = status
@@ -76,7 +76,7 @@ export default function Todocontainer (){
         }))
         const todo = todos.filter(item => item.id !== id)
         axios.delete(`http://localhost:3000/db/${id}`, todo)
-        console.log("todos", todos)
+        // console.log("todos", todos)
     }
     
         return (
