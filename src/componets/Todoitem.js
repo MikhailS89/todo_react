@@ -13,24 +13,15 @@ export default function Todoitem({id, value, status}) {
     return (
         <div className="box__form">
             <form className="form">
-            {/* <FormControl className="form">  */}
-                {/* <input onChange={(event)=> changeChecked(id, event.target.checked)} type="checkbox"
-                defaultChecked={status}></input> */}
                 <div className="form__checkbox">
-                <Checkbox onChange={(event)=> changeChecked(id, event.target.checked)} defaultChecked={status} color="primary" inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
+                    <Checkbox onChange={(event)=> changeChecked(id, event.target.checked)} defaultChecked={status} color="primary" inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />
                 </div>
-            
-                {/* <input onChange={(event)=> changeTodo (id, event.target.value)} defaultValue={value}></input> */}
                 <div className="form__input">
-                <TextField  onChange={(event)=> changeTodo (id, event.target.value)} defaultValue={value} />
+                    <TextField  onChange={(event)=> changeTodo (id, event.target.value)} defaultValue={value} />
                 </div>
-                {/* Удален элемент id="standard-basic" */}
-
-                {/* <button onClick={()=> removeTodo(id)}>DEL</button> */}
                 <div className="form__button">
-                <Button onClick={()=> removeTodo(id)} variant="outlined">DEL</Button>
+                    <Button onClick={()=> removeTodo(id)} variant="outlined">DEL</Button>
                 </div>
-            {/* </FormControl>        */}
             </form>
         </div>
     )

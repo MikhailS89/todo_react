@@ -14,18 +14,11 @@ export default function Todocontainer (){
     //axios GET
     useEffect(() => {
         const getData = async () => {
-            const res = await axios.get('http://localhost:3000/db')
-            // console.log('res: ', res.data.db)
+            const res = await axios.get(process.env.REACT_APP_API_TODOS_GET)
             setTodos(res.data.db)
         }
         getData()
     }, [setTodos])
-
-
-    // useEffect(()=>{
-    //     console.log('init')
-    // }, [])
-
 
     //axios POST
     const addTodo = event => {
@@ -38,10 +31,9 @@ export default function Todocontainer (){
             setTodos([
                 ...todos, todo
             ])
-            axios.post('http://localhost:3000/db', todo)
+            axios.post(process.env.REACT_APP_API_TODO_POST, todo)
             SetTodoTitle('')
         }
-        // console.log(event)
     }
 
     //axios PUT input
@@ -53,15 +45,11 @@ export default function Todocontainer (){
             return item
         }))
         const todo = todos.find(item => item.id === id )
-        axios.put(`http://localhost:3000/db/${id}`, todo)
-
-        // console.log("id:", id , "value:" , value);
-        // console.log("todos", todos);
+        axios.put(`${process.env.REACT_APP_API_TODO_PUT}${id}`, todo)
     }
 
     //axios PUT checked
     const changeChecked = (id, status) => {
-        // console.log(id, status)
         setTodos(todos.map(item=>{
             if(item.id ===id){
                 item.status = status
@@ -69,7 +57,7 @@ export default function Todocontainer (){
             return item
         }))
         const todo = todos.find(item => item.id === id )
-        axios.put(`http://localhost:3000/db/${id}`, todo)
+        axios.put(`${process.env.REACT_APP_API_TODO_PUT}${id}`, todo)
     }
 
     //axios DELETE
@@ -78,8 +66,7 @@ export default function Todocontainer (){
             return todo.id !== id
         }))
         const todo = todos.filter(item => item.id !== id)
-        axios.delete(`http://localhost:3000/db/${id}`, todo)
-        // console.log("todos", todos)
+        axios.delete(`${process.env.REACT_APP_API_TODO_DELETE}${id}`, todo)
     }
     
         return (
@@ -87,21 +74,13 @@ export default function Todocontainer (){
                 removeTodo, changeTodo, changeChecked
             }}>
             <div className="todo">
-                {/* <h1 className="todo__title">To Do</h1> */}
                 <div className="todo__form">
-                    {/* <input 
-                        type="text" 
-                        value={todoTitle}
-                        onChange={event => SetTodoTitle(event.target.value)}
-                        onKeyPress={addTodo}
-                    ></input> */}
                     <div className="todo__form-input">
                         <TextField value={todoTitle}
                             onChange={event => SetTodoTitle(event.target.value)}
                             onKeyPress={addTodo} id="outlined-basic" variant="outlined" style={{ margin: 8 }} size="small"/>
                     </div>   
                     <div className="todo__form-button"> 
-                    {/* <button onClick={addTodo}>ADD</button> */}
                         <Button onClick={addTodo} variant="contained" color="primary" size="large">ADD</Button>
                     </div>
                 </div>
